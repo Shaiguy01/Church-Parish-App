@@ -1,2 +1,4 @@
 # Church-Parish-App
-Our own app, and one day maybe we can sell it haha!
+- database wise, it uses that local/msssql thing like in campus
+
+
