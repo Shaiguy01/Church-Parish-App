@@ -4,7 +4,7 @@
 
 <form id="form1" runat="server">
 
-<h1>Hello world</h1>
+<h1>Church Parish CRUD Web App (to soon be converted to a html, css, javascript -> app)</h1>
     <p>
         <asp:TextBox ID="firstnametb" runat="server" placeholder="First Name"></asp:TextBox>
         &nbsp;<asp:TextBox ID="gendertb" runat="server" placeholder="Gender"></asp:TextBox>

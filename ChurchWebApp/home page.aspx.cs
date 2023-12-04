@@ -38,7 +38,7 @@ namespace ChurchWebApp
             GridView1.DataBind(); //all this page does is load the correct data grid if theres any data in them, it will still load, the grid juts wont show if theres no rows
         }
 
-        protected void Button1_Click(object sender, EventArgs e)//below is the button method/code for adding a user in
+        protected void Button1_Click(object sender, EventArgs e)//below is the button method/code for ADDING a user in
         {
             if (con.State == ConnectionState.Closed)
                 con.Open();
@@ -78,29 +78,65 @@ namespace ChurchWebApp
                 Clear();
         }
 
-        protected void searchbtn_Click(object sender, EventArgs e)
+        protected void searchbtn_Click(object sender, EventArgs e) //SEARCHING
         {
+
             if (con.State == ConnectionState.Closed)
                 con.Open();
-            SqlDataAdapter sqlcmd = new SqlDataAdapter(
-                "select * from ParishTable where personFirstName = '" + firstnametb.Text + "'" +
-                " OR personLastName = '" + lastnametb.Text + "'" +
-                " OR personAge = '" + agetb.Text + "'" +
-                " OR gender = '" + gendertb.Text + "'" +
-                " OR dateOfBirth = '" + dateofbirthtb.Text + "'" +
-                " OR contactNumber = '" + contactnumbertb.Text + "'" +
-                " OR email = '" + emailtb.Text + "'" +
-                " OR houseNumber = '" + housenumbertb.Text + "'" +
-                " OR roadName = '" + roadnametb.Text + "'" +
-                " OR suburb = '" + suburbtb.Text + "'" +
-                " OR Occupation = '" + occupationtb.Text + "'" +
-                " OR TimeAndTalents = '" + timeandtalentstb.Text + "'" +
-                " OR PreferredMassTime = '" + preferedmasstimetb.Text + "'" +
-                " OR stewardship = '" + stewardshiptb.Text + "'" +
-                " ", con);                                                      //suppose to be one big query where you could use multiple fields to refine your search, but onlt works for one input so far, problem here
-            sqlcmd.SelectCommand.CommandType = CommandType.Text;
+
+            SqlCommand sqlcmd = new SqlCommand("select * from ParishTable WHERE 1=1", con);
+
+            //the sql
+            if (!string.IsNullOrWhiteSpace(firstnametb.Text))
+                sqlcmd.CommandText += " AND personFirstName = @personFirstName";
+            if (!string.IsNullOrWhiteSpace(lastnametb.Text))
+                sqlcmd.CommandText += " AND personLastName = @personLastName";
+            if (!string.IsNullOrWhiteSpace(agetb.Text))
+                sqlcmd.CommandText += " AND personAge = @personAge";
+            if (!string.IsNullOrWhiteSpace(gendertb.Text))
+                sqlcmd.CommandText += " AND gender = @gender";
+            if (!string.IsNullOrWhiteSpace(dateofbirthtb.Text))
+                sqlcmd.CommandText += " AND dateOfBirth = @dateOfBirth";
+            if (!string.IsNullOrWhiteSpace(contactnumbertb.Text))
+                sqlcmd.CommandText += " AND contactNumber = @contactNumber";
+            if (!string.IsNullOrWhiteSpace(emailtb.Text))
+                sqlcmd.CommandText += " AND email = @email";
+            if (!string.IsNullOrWhiteSpace(housenumbertb.Text))
+                sqlcmd.CommandText += " AND houseNumber = @houseNumber";
+            if (!string.IsNullOrWhiteSpace(roadnametb.Text))
+                sqlcmd.CommandText += " AND roadName = @roadName";
+            if (!string.IsNullOrWhiteSpace(suburbtb.Text))
+                sqlcmd.CommandText += " AND suburb = @suburb";
+            if (!string.IsNullOrWhiteSpace(occupationtb.Text))
+                sqlcmd.CommandText += " AND Occupation = @Occupation";
+            if (!string.IsNullOrWhiteSpace(timeandtalentstb.Text))
+                sqlcmd.CommandText += " AND TimeAndTalents = @TimeAndTalents";
+            if (!string.IsNullOrWhiteSpace(preferedmasstimetb.Text))
+                sqlcmd.CommandText += " AND PreferredMassTime = @PreferredMassTime";
+            if (!string.IsNullOrWhiteSpace(stewardshiptb.Text))
+                sqlcmd.CommandText += " AND stewardship = @stewardship";
+
+
+            //the parameters
+            sqlcmd.Parameters.AddWithValue("@personFirstName", firstnametb.Text); // the script's parameters, add it cause its a value, and add what im using to point at
+            sqlcmd.Parameters.AddWithValue("@personLastName", lastnametb.Text);
+            sqlcmd.Parameters.AddWithValue("@personAge", agetb.Text);
+            sqlcmd.Parameters.AddWithValue("@gender", gendertb.Text);
+            sqlcmd.Parameters.AddWithValue("@dateOfBirth", dateofbirthtb.Text);
+            sqlcmd.Parameters.AddWithValue("@contactNumber", contactnumbertb.Text);
+            sqlcmd.Parameters.AddWithValue("@email", emailtb.Text);
+            sqlcmd.Parameters.AddWithValue("@houseNumber", housenumbertb.Text);
+            sqlcmd.Parameters.AddWithValue("@roadName", roadnametb.Text);
+            sqlcmd.Parameters.AddWithValue("@suburb", suburbtb.Text);
+            sqlcmd.Parameters.AddWithValue("@Occupation", occupationtb.Text);
+            sqlcmd.Parameters.AddWithValue("@TimeAndTalents", timeandtalentstb.Text);
+            sqlcmd.Parameters.AddWithValue("@PreferredMassTime", preferedmasstimetb.Text);
+            sqlcmd.Parameters.AddWithValue("@stewardship", stewardshiptb.Text);
+
+
+            SqlDataAdapter adapter = new SqlDataAdapter(sqlcmd);
             DataTable dtbl = new DataTable();
-            sqlcmd.Fill(dtbl);
+            adapter.Fill(dtbl);
             con.Close();
             GridView1.DataSource = dtbl;
             GridView1.DataBind();
