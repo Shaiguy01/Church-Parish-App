@@ -171,54 +171,54 @@ namespace ChurchWebApp
         
         protected void Button2_Click(object sender, EventArgs e)
         {
-                string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ChurchDB;Integrated Security=True";
-                string columnName = "contactNumber";
+        //        string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ChurchDB;Integrated Security=True";
+        //        string columnName = "contactNumber";
 
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
+        //        using (SqlConnection connection = new SqlConnection(connectionString))
+        //        {
+        //            connection.Open();
 
-                    string query = $"SELECT {columnName} FROM ParishTable";
+        //            string query = $"SELECT {columnName} FROM ParishTable";
 
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                string value = reader[columnName].ToString();
-                                numbersDataList.Add(value);
-                            }
-                        }
-                    }
-                }
-                // Call the method to display the data in the textbox
-                DisplayDataInTextBox();  
+        //            using (SqlCommand command = new SqlCommand(query, connection))
+        //            {
+        //                using (SqlDataReader reader = command.ExecuteReader())
+        //                {
+        //                    while (reader.Read())
+        //                    {
+        //                        string value = reader[columnName].ToString();
+        //                        numbersDataList.Add(value);
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        // Call the method to display the data in the textbox
+        //        DisplayDataInTextBox();  
         }
 
-        private void DisplayDataInTextBox()
-        {
-            // Clear the textbox first
-            //messageTB.Text = "";
+        //private void DisplayDataInTextBox()
+        //{
+        //    // Clear the textbox first
+        //    //messageTB.Text = "";
 
-            StringBuilder sb = new StringBuilder();
+        //    StringBuilder sb = new StringBuilder();
 
-            // Append each value from the dataList to the textbox
-            //foreach (string value in numbersDataList)
-            //{
-            //    sb.AppendLine(value);
-            //}
+        //    // Append each value from the dataList to the textbox
+        //    //foreach (string value in numbersDataList)
+        //    //{
+        //    //    sb.AppendLine(value);
+        //    //}
 
-            for (int i = 0; i <numbersDataList.Count ;i++ )
-            {
-                sb.Append(numbersDataList[i]);
-                sb.AppendLine();
+        //    for (int i = 0; i <numbersDataList.Count ;i++ )
+        //    {
+        //        sb.Append(numbersDataList[i]);
+        //        sb.AppendLine();
 
-            }
+        //    }
 
-            messageTB.Text = sb.ToString();
-        }
-        // so now that we have the forloop working, we just need to add the code to send a message in that loop, from a youtube video, and replace the numbers part with the list element number
+        //    messageTB.Text = sb.ToString();
+        //}
+        //// so now that we have the forloop working, we just need to add the code to send a message in that loop, from a youtube video, and replace the numbers part with the list element number
     }
 
 }
