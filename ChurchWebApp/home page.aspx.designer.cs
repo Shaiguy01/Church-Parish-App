@@ -39,7 +39,7 @@ namespace ChurchWebApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox gendertb;
+        protected global::System.Web.UI.WebControls.DropDownList gendertb;
 
         /// <summary>
         /// emailtb control.
@@ -66,7 +66,7 @@ namespace ChurchWebApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox preferedmasstimetb;
+        protected global::System.Web.UI.WebControls.DropDownList preferedmasstimetb;
 
         /// <summary>
         /// lastnametb control.
@@ -111,7 +111,7 @@ namespace ChurchWebApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox stewardshiptb;
+        protected global::System.Web.UI.WebControls.DropDownList stewardshiptb;
 
         /// <summary>
         /// agetb control.
@@ -147,7 +147,7 @@ namespace ChurchWebApp
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox timeandtalentstb;
+        protected global::System.Web.UI.WebControls.DropDownList timeandtalentstb;
 
         /// <summary>
         /// Button1 control.
@@ -175,6 +175,15 @@ namespace ChurchWebApp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button searchbtn;
+
+        /// <summary>
+        /// errormsgplace control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errormsgplace;
 
         /// <summary>
         /// GridView1 control.
